@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "139376456594",
+    "firebase_url": "https://flutter-varios-70df3-default-rtdb.firebaseio.com",
+    "project_id": "flutter-varios-70df3",
+    "storage_bucket": "flutter-varios-70df3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139376456594:android:191264d2094de0cd12474b",
+        "android_client_info": {
+          "package_name": "com.raidev.usersApp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6BPmnRA57ZzwlWkp8kYBVj3SlUiBO6Q4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
