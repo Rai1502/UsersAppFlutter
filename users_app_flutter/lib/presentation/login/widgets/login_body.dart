@@ -4,6 +4,7 @@ import 'package:users_app_flutter/domain/errors/app_errors.dart';
 import 'package:users_app_flutter/main.dart';
 import 'package:users_app_flutter/presentation/constants/color_palette.dart';
 import 'package:users_app_flutter/presentation/home/pages/home_page.dart';
+import 'package:users_app_flutter/presentation/home/pages/home_provider.dart';
 import 'package:users_app_flutter/presentation/login/cubit/login_cubit.dart';
 import 'package:users_app_flutter/presentation/style/text_theme.dart';
 import 'package:users_app_flutter/presentation/widgets/custom_alert_dialog.dart';
@@ -142,8 +143,7 @@ class _LoginBodyState extends State<LoginBody> {
   }
 
   void _navigateToHome(BuildContext context) {
-    print('Sesion iniciada....');
     navigatorKey.currentState?.pushReplacement(
-        MaterialPageRoute<void>(builder: (_) => const HomePage()));
+        MaterialPageRoute<void>(builder: (_) => const HomeProvider()));
   }
 }
