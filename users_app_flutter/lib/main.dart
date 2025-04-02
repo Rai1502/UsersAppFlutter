@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:users_app_flutter/presentation/login/pages/login_provider.dart';
+import 'package:users_app_flutter/presentation/style/text_theme.dart';
 import 'package:users_app_flutter/services/firebase_service.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,12 +16,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          textTheme: theme,
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
         ),
-      ),
-    );
+        navigatorKey: navigatorKey,
+        title: 'Users App',
+        home: const LoginProvider());
   }
 }
