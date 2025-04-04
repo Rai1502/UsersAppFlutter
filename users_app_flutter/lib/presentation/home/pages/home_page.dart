@@ -5,6 +5,7 @@ import 'package:users_app_flutter/presentation/home/cubit/home_cubit.dart';
 import 'package:users_app_flutter/presentation/home/widgets/convex_navigation_bar.dart';
 import 'package:users_app_flutter/presentation/style/text_theme.dart';
 import 'package:users_app_flutter/presentation/users/pages/users_page.dart';
+import 'package:users_app_flutter/presentation/users/pages/users_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -51,7 +52,7 @@ class HomePage extends StatelessWidget {
           builder: (BuildContext context, HomeState state) {
         switch (state.currentIndex) {
           case 0:
-            return const UsersPage();
+            return const UsersProvider();
           case 1:
             return const Center(child: Text('Proximamente....'));
         }

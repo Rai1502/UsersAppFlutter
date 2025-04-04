@@ -8,4 +8,5 @@ mixin class ColorPalette {
   static const Color focusedTextField = Color(0xFF730F84);
   static const Color warning = Color.fromARGB(255, 243, 179, 83);
   static const Color appBar = Color.fromARGB(255, 27, 133, 219);
+  static const Color usersBackGround = Color.fromARGB(255, 168, 200, 253);
 }
