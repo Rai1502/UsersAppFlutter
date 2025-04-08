@@ -31,4 +31,20 @@ class UsersRemoteSource implements UsersSource {
           (response) => UsersDto.fromJson(response),
         );
   }
+
+  @override
+  Stream<UsersDto> updateUser(Users user) async* {
+    yield* ApiService()
+        .put(
+            '${RemoteConstants.updateUserMethod}${user.id}',
+            CreateUserRequestDto(
+                    name: user.name,
+                    username: user.userName,
+                    email: user.email,
+                    phone: user.phone,
+                    website: user.webSite)
+                .toJson())
+        .asStream()
+        .map((response) => UsersDto.fromJson(response));
+  }
 }

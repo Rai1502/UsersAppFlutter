@@ -20,6 +20,11 @@ class UsersDataRepository implements UsersRepository {
     yield* usersSource!.createUSer(user).map((user) => _mapUsersFromDto(user));
   }
 
+  @override
+  Stream<Users> updateUser(Users user) async* {
+    yield* usersSource!.updateUser(user).map((user) => _mapUsersFromDto(user));
+  }
+
   Users _mapUsersFromDto(UsersDto user) => Users(
         id: user.id ?? 0,
         name: user.name ?? '',

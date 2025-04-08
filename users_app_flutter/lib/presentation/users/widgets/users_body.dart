@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:swipe_to/swipe_to.dart';
 import 'package:users_app_flutter/presentation/constants/dimens.dart';
 import 'package:users_app_flutter/presentation/style/text_theme.dart';
 import 'package:users_app_flutter/presentation/users/cubit/users_cubit.dart';
+import 'package:users_app_flutter/presentation/users/pages/create_user_page.dart';
 import 'package:users_app_flutter/presentation/users/widgets/users_tile.dart';
 
 class UsersBody extends StatelessWidget {
@@ -60,7 +62,39 @@ class UsersBody extends StatelessWidget {
                                       physics: const ScrollPhysics(),
                                       itemBuilder: (context, index) {
                                         final user = state.users[index];
-                                        return UsersTile(user: user);
+                                        return SwipeTo(
+                                            onLeftSwipe: (_) {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      CreateUserPage(
+                                                          cubit: cubit,
+                                                          user: user),
+                                                ),
+                                              );
+                                            },
+                                            onRightSwipe: (_) {
+                                              // Lógica para eliminar el usuario
+                                              // cubit.deleteUser(user.id);
+                                            },
+                                            leftSwipeWidget: Container(
+                                              alignment: Alignment.centerLeft,
+                                              padding: const EdgeInsets.only(
+                                                  left: 20.0),
+                                              color: Colors.blue,
+                                              child: const Icon(Icons.update,
+                                                  color: Colors.white),
+                                            ),
+                                            rightSwipeWidget: Container(
+                                              alignment: Alignment.centerRight,
+                                              padding: const EdgeInsets.only(
+                                                  right: 20.0),
+                                              color: Colors.red,
+                                              child: const Icon(Icons.delete,
+                                                  color: Colors.white),
+                                            ),
+                                            child: UsersTile(user: user));
                                       },
                                     ),
                                   );

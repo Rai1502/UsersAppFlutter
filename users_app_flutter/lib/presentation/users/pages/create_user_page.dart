@@ -162,8 +162,14 @@ class _CreateUserPageState extends State<CreateUserPage> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    widget.cubit
-                        ?.createUser(onSuccess: () => Navigator.pop(context));
+                    if (widget.user != null) {
+                      widget.cubit?.updateUser(
+                          onSuccess: () => Navigator.pop(context),
+                          id: widget.user?.id);
+                    } else {
+                      widget.cubit
+                          ?.createUser(onSuccess: () => Navigator.pop(context));
+                    }
                   }
                 },
                 child: const Text('Crear usuario'),

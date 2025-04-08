@@ -62,4 +62,29 @@ class UsersCubit extends Cubit<UsersState> {
       print('No se creo el usuario');
     });
   }
+
+  void updateUser({Function? onSuccess, int? id}) {
+    emit(state.copyWith(isLoading: true));
+    usersRepository
+        .updateUser(Users(
+            id: id ?? 0,
+            name: state.name,
+            userName: state.userName,
+            email: state.email,
+            phone: state.phone,
+            webSite: state.web))
+        .listen((user) {
+      final listaActual =
+          List<Users>.from(state.users); // Crear una copia de la lista
+      final index = listaActual.indexWhere((u) => u.id == user.id);
+      if (index != -1) {
+        listaActual[index] = user;
+        emit(state.copyWith(users: listaActual, isLoading: false));
+        onSuccess?.call();
+      }
+    }, onError: (Object error) {
+      emit(state.copyWith(isLoading: false));
+      print('No se actualizo el usuario');
+    });
+  }
 }

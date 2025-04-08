@@ -39,4 +39,21 @@ class ApiService {
       throw AppError('Error de conexión: ${e.message}');
     }
   }
+
+  Future<dynamic> put(String endpoint, Map<String, dynamic> data) async {
+    try {
+      final response = await _dio.put(
+        endpoint,
+        data: data,
+      );
+      // Verificamos el status code
+      if (response.statusCode == 200) {
+        return response.data;
+      } else {
+        throw AppError('Error en la solicitud PUT: ${response.statusCode}');
+      }
+    } on DioException catch (e) {
+      throw AppError('Error de conexión: ${e.message}');
+    }
+  }
 }
