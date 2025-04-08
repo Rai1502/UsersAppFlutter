@@ -18,7 +18,7 @@ class UsersBody extends StatelessWidget {
       builder: (context, state) {
         return state.isLoading
             ? const Center(
-                child: LinearProgressIndicator(),
+                child: CircularProgressIndicator(),
               )
             : SafeArea(
                 child: RefreshIndicator(
@@ -76,7 +76,7 @@ class UsersBody extends StatelessWidget {
                                             },
                                             onRightSwipe: (_) {
                                               // Lógica para eliminar el usuario
-                                              // cubit.deleteUser(user.id);
+                                              cubit.deleteUser(id: user.id);
                                             },
                                             leftSwipeWidget: Container(
                                               alignment: Alignment.centerLeft,

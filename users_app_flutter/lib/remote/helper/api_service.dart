@@ -56,4 +56,19 @@ class ApiService {
       throw AppError('Error de conexión: ${e.message}');
     }
   }
+
+  Future<bool> delete(String endpoint) async {
+    try {
+      final response = await _dio.delete(endpoint);
+      // Verificamos el status code
+      if (response.statusCode == 200) {
+        return true;
+      } else {
+        throw AppError(
+            'Error en la solicitud DELETE: ${response.statusMessage}');
+      }
+    } on DioException catch (e) {
+      throw AppError('Error de conexión: ${e.message}');
+    }
+  }
 }

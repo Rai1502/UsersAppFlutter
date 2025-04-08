@@ -87,4 +87,20 @@ class UsersCubit extends Cubit<UsersState> {
       print('No se actualizo el usuario');
     });
   }
+
+  void deleteUser({Function? onSuccess, int? id}) {
+    emit(state.copyWith(isLoading: true));
+    usersRepository.deleteUser(id.toString()).listen((_) {
+      final listaActual = List<Users>.from(state.users);
+      final index = listaActual.indexWhere((u) => u.id == id);
+      if (index != -1) {
+        listaActual.removeAt(index);
+        emit(state.copyWith(users: listaActual, isLoading: false));
+        onSuccess?.call();
+      }
+    }, onError: (Object error) {
+      emit(state.copyWith(isLoading: false));
+      print('No se eliminó el usuario');
+    });
+  }
 }

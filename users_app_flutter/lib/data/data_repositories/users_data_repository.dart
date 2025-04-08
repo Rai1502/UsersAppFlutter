@@ -25,6 +25,11 @@ class UsersDataRepository implements UsersRepository {
     yield* usersSource!.updateUser(user).map((user) => _mapUsersFromDto(user));
   }
 
+  @override
+  Stream<bool> deleteUser(String id) async* {
+    yield* usersSource!.deleteUser(id);
+  }
+
   Users _mapUsersFromDto(UsersDto user) => Users(
         id: user.id ?? 0,
         name: user.name ?? '',

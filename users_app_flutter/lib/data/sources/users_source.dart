@@ -5,4 +5,5 @@ abstract class UsersSource {
   Stream<List<UsersDto>> getUsers();
   Stream<UsersDto> createUSer(Users user);
   Stream<UsersDto> updateUser(Users user);
+  Stream<bool> deleteUser(String id);
 }

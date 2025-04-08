@@ -47,4 +47,11 @@ class UsersRemoteSource implements UsersSource {
         .asStream()
         .map((response) => UsersDto.fromJson(response));
   }
+
+  @override
+  Stream<bool> deleteUser(String id) async* {
+    yield* ApiService()
+        .delete('${RemoteConstants.deleteUserMethod}$id')
+        .asStream();
+  }
 }
