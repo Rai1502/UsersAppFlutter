@@ -22,4 +22,21 @@ class ApiService {
       throw AppError('Error de conexión: ${e.message}');
     }
   }
+
+  Future<dynamic> post(String endpoint, Map<String, dynamic> data) async {
+    try {
+      final response = await _dio.post(
+        endpoint,
+        data: data,
+      );
+      // Verificamos el status code
+      if (response.statusCode == 201) {
+        return response.data;
+      } else {
+        throw AppError('Error en la solicitud POST: ${response.statusMessage}');
+      }
+    } on DioException catch (e) {
+      throw AppError('Error de conexión: ${e.message}');
+    }
+  }
 }

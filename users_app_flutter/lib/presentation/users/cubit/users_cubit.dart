@@ -42,5 +42,24 @@ class UsersCubit extends Cubit<UsersState> {
     });
   }
 
-  void createUser() {}
+  void createUser({Function? onSuccess}) {
+    emit(state.copyWith(isLoading: true));
+    usersRepository
+        .createUser(Users(
+            id: 0,
+            name: state.name,
+            userName: state.userName,
+            email: state.email,
+            phone: state.phone,
+            webSite: state.web))
+        .listen((Users user) {
+      final listaActual = state.users;
+      final listaNueva = [...listaActual, user];
+      emit(state.copyWith(users: listaNueva, isLoading: false));
+      onSuccess?.call();
+    }, onError: (Object error) {
+      emit(state.copyWith(isLoading: false));
+      print('No se creo el usuario');
+    });
+  }
 }

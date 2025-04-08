@@ -55,7 +55,7 @@ class UsersBody extends StatelessWidget {
                                     ),
                                     padding: const EdgeInsets.all(8),
                                     child: ListView.builder(
-                                      itemCount: 10,
+                                      itemCount: state.users.length,
                                       shrinkWrap: true,
                                       physics: const ScrollPhysics(),
                                       itemBuilder: (context, index) {

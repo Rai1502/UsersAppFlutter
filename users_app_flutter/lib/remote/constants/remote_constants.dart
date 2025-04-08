@@ -4,4 +4,5 @@ class RemoteConstants {
   //Metodos
 
   static const String getUsersMethod = 'users';
+  static const String createUserMethod = 'users';
 }

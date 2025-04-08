@@ -15,6 +15,11 @@ class UsersDataRepository implements UsersRepository {
         .map((List<UsersDto> list) => list.map(_mapUsersFromDto).toList());
   }
 
+  @override
+  Stream<Users> createUser(Users user) async* {
+    yield* usersSource!.createUSer(user).map((user) => _mapUsersFromDto(user));
+  }
+
   Users _mapUsersFromDto(UsersDto user) => Users(
         id: user.id ?? 0,
         name: user.name ?? '',
