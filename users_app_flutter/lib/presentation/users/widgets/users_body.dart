@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:users_app_flutter/presentation/constants/color_palette.dart';
 import 'package:users_app_flutter/presentation/constants/dimens.dart';
 import 'package:users_app_flutter/presentation/style/text_theme.dart';
 import 'package:users_app_flutter/presentation/users/cubit/users_cubit.dart';
@@ -58,7 +57,7 @@ class UsersBody extends StatelessWidget {
                                     child: ListView.builder(
                                       itemCount: 10,
                                       shrinkWrap: true,
-                                      physics: ScrollPhysics(),
+                                      physics: const ScrollPhysics(),
                                       itemBuilder: (context, index) {
                                         final user = state.users[index];
                                         return UsersTile(user: user);

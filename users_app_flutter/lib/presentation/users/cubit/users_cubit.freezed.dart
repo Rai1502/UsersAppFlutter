@@ -18,6 +18,11 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$UsersState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<Users> get users => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
+  String get phone => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get web => throw _privateConstructorUsedError;
 
   /// Create a copy of UsersState
   /// with the given fields replaced by the non-null parameter values.
@@ -32,7 +37,14 @@ abstract class $UsersStateCopyWith<$Res> {
           UsersState value, $Res Function(UsersState) then) =
       _$UsersStateCopyWithImpl<$Res, UsersState>;
   @useResult
-  $Res call({bool isLoading, List<Users> users});
+  $Res call(
+      {bool isLoading,
+      List<Users> users,
+      String name,
+      String userName,
+      String phone,
+      String email,
+      String web});
 }
 
 /// @nodoc
@@ -52,6 +64,11 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
   $Res call({
     Object? isLoading = null,
     Object? users = null,
+    Object? name = null,
+    Object? userName = null,
+    Object? phone = null,
+    Object? email = null,
+    Object? web = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -62,6 +79,26 @@ class _$UsersStateCopyWithImpl<$Res, $Val extends UsersState>
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
               as List<Users>,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      web: null == web
+          ? _value.web
+          : web // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -74,7 +111,14 @@ abstract class _$$UsersStateImplCopyWith<$Res>
       __$$UsersStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, List<Users> users});
+  $Res call(
+      {bool isLoading,
+      List<Users> users,
+      String name,
+      String userName,
+      String phone,
+      String email,
+      String web});
 }
 
 /// @nodoc
@@ -92,6 +136,11 @@ class __$$UsersStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? users = null,
+    Object? name = null,
+    Object? userName = null,
+    Object? phone = null,
+    Object? email = null,
+    Object? web = null,
   }) {
     return _then(_$UsersStateImpl(
       isLoading: null == isLoading
@@ -102,6 +151,26 @@ class __$$UsersStateImplCopyWithImpl<$Res>
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
               as List<Users>,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      userName: null == userName
+          ? _value.userName
+          : userName // ignore: cast_nullable_to_non_nullable
+              as String,
+      phone: null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+      email: null == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      web: null == web
+          ? _value.web
+          : web // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -109,7 +178,14 @@ class __$$UsersStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$UsersStateImpl implements _UsersState {
-  _$UsersStateImpl({this.isLoading = false, final List<Users> users = const []})
+  _$UsersStateImpl(
+      {this.isLoading = false,
+      final List<Users> users = const [],
+      this.name = '',
+      this.userName = '',
+      this.phone = '',
+      this.email = '',
+      this.web = ''})
       : _users = users;
 
   @override
@@ -125,8 +201,24 @@ class _$UsersStateImpl implements _UsersState {
   }
 
   @override
+  @JsonKey()
+  final String name;
+  @override
+  @JsonKey()
+  final String userName;
+  @override
+  @JsonKey()
+  final String phone;
+  @override
+  @JsonKey()
+  final String email;
+  @override
+  @JsonKey()
+  final String web;
+
+  @override
   String toString() {
-    return 'UsersState(isLoading: $isLoading, users: $users)';
+    return 'UsersState(isLoading: $isLoading, users: $users, name: $name, userName: $userName, phone: $phone, email: $email, web: $web)';
   }
 
   @override
@@ -136,12 +228,25 @@ class _$UsersStateImpl implements _UsersState {
             other is _$UsersStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            const DeepCollectionEquality().equals(other._users, _users));
+            const DeepCollectionEquality().equals(other._users, _users) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.web, web) || other.web == web));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, isLoading, const DeepCollectionEquality().hash(_users));
+      runtimeType,
+      isLoading,
+      const DeepCollectionEquality().hash(_users),
+      name,
+      userName,
+      phone,
+      email,
+      web);
 
   /// Create a copy of UsersState
   /// with the given fields replaced by the non-null parameter values.
@@ -153,13 +258,29 @@ class _$UsersStateImpl implements _UsersState {
 }
 
 abstract class _UsersState implements UsersState {
-  factory _UsersState({final bool isLoading, final List<Users> users}) =
-      _$UsersStateImpl;
+  factory _UsersState(
+      {final bool isLoading,
+      final List<Users> users,
+      final String name,
+      final String userName,
+      final String phone,
+      final String email,
+      final String web}) = _$UsersStateImpl;
 
   @override
   bool get isLoading;
   @override
   List<Users> get users;
+  @override
+  String get name;
+  @override
+  String get userName;
+  @override
+  String get phone;
+  @override
+  String get email;
+  @override
+  String get web;
 
   /// Create a copy of UsersState
   /// with the given fields replaced by the non-null parameter values.

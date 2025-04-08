@@ -13,6 +13,26 @@ class UsersCubit extends Cubit<UsersState> {
 
   final UsersRepository usersRepository;
 
+  void setName(String name) {
+    emit(state.copyWith(name: name));
+  }
+
+  void setUserName(String userName) {
+    emit(state.copyWith(userName: userName));
+  }
+
+  void setPhone(String phone) {
+    emit(state.copyWith(phone: phone));
+  }
+
+  void setEmail(String email) {
+    emit(state.copyWith(email: email));
+  }
+
+  void setWeb(String web) {
+    emit(state.copyWith(web: web));
+  }
+
   void getUsers() {
     emit(state.copyWith(isLoading: true));
     usersRepository.getUsers().listen((users) {
@@ -21,4 +41,6 @@ class UsersCubit extends Cubit<UsersState> {
       emit(state.copyWith(isLoading: false));
     });
   }
+
+  void createUser() {}
 }
